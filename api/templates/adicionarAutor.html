@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<mat-card>
+    <mat-card-header><h5 class="text-center">Dados do Autor</h5></mat-card-header>
+</mat-card>
+
+<form action="/autor/salvar" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id_autor" value="{{autor.pk}}">
+    <div class='form-group'>
+        <label>Nome do Autor:</label>
+        <input  class ='form-control' id = 'nome' name='nome' type="text" placeholder="Nome:" value='{{autor.nome}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Sobrenome do Autor:</label>
+        <input  class ='form-control' id = 'sobrenome' name='sobrenome' type="text" placeholder="Sobrenome:" value='{{autor.sobrenome}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Idade:</label>
+        <input  class ='form-control' id = 'idade' name='idade' type="text" placeholder="Idade:" value='{{autor.idade}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>CPF:</label>
+        <input  class ='form-control' id = 'cpf' name='cpf' type="text" placeholder="Sem pontos e hifens" value='{{autor.cpf}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label for="sexo">Sexo:</label>
+        <select class= 'form-control' id = 'sexo' name='sexo' placeholder="Sexo:" value='{{autor.sexo}}'>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+        </select>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success" role="button">Salvar</button>
+    <a href="/autor" class="btn btn-secondary"> Cancelar</a>
+</form>
+  
+{% endblock %}

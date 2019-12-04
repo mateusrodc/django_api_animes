@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<mat-card>
+    <mat-card-header><h5 class="text-center">Lista de Status</h5></mat-card-header>
+</mat-card>
+<a class="btn btn-primary" role='button' href='/status/add'>Novo Status</a>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">SITUAÇÃO</th>
+                <th scope="col">OBSERVAÇÃO</th>
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in stats %}
+                <tr>
+                    <th scope="row">{{ s.pk }}</th>
+                    <td>{{ s.situacao }}</td>
+                    <td>{{ s.observacao }}</td>
+                    <td>
+                        <a href="/status/editar/{{s.pk}}" class="btn btn-warning" >Editar</a>
+                        <a href="/status/excluir/{{s.pk}}" class="btn btn-danger" >Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}

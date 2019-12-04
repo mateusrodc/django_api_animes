@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<mat-card>
+    <mat-card-header><h5 class="text-center">Lista de Animes</h5></mat-card-header>
+</mat-card>
+<a class="btn btn-primary" role='button' href='/anime/add'>Novo Anime</a>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Classificação</th>
+                <th scope="col">Status</th>
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in anime %}
+                <tr>
+                    <th scope="row">{{ a.pk }}</th>
+                    <td>{{ a.nome }}</td>
+                    <td>{{ a.autor }}</td>
+                    <td>{{a.classificacao}}</td>
+                    <td>{{a.status}}</td>
+                    <td>
+                        <a href="/anime/editar/{{a.pk}}" class="btn btn-warning" >Editar</a>
+                        <a href="/anime/excluir/{{a.pk}}" class="btn btn-danger" >Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}

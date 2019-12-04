@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<mat-card>
+    <mat-card-header><h5 class="text-center">Dados do Anime</h5></mat-card-header>
+</mat-card>
+
+<form action="/anime/salvar" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id_anime" value="{{anime.pk}}">
+    <div class='form-group'>
+        <label>Título:</label>
+        <input  class ='form-control' id = 'nome' name='nome' type="text" placeholder="Título do Anime:" value='{{anime.nome}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Ano de Lançamento:</label>
+        <input  class ='form-control' id = 'ano_lancamento' name='ano_lancamento' type="text" placeholder="Ano:" value='{{anime.ano_lancamento}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Classificação Etária:</label>
+        <input  class ='form-control' id = 'classificacao' name='classificacao' type="text" placeholder="Classificação:" value='{{anime.classificacao}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Duração de cada episódio:</label>
+        <input  class ='form-control' id = 'duracao_episodio' name='duracao_episodio' type="time" placeholder="" value='{{anime.duracao_episodio}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Número de Episódios:</label>
+        <input  class ='form-control' id = 'qt_episodios' name='qt_episodios' type="text" placeholder="Numero de episódios:" value='{{anime.qt_episodio}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label for="autor_anime">Autor:</label>
+        <select class= 'form-control' id = 'autor_anime' name='autor_anime' value='{{autor.id}}'>
+            {% for autor in autores %}
+			    <option value="{{autor.id}}"> {{autor.nome}}</option>
+			{% endfor %}
+        </select>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label for="categoria_anime">Categoria:</label>
+        <select class= 'form-control' id = 'categoria_anime' name='categoria_anime' value='{{categoria.id}}'>
+            {% for categoria in categorias %}
+			    <option value="{{categoria.id}}"> {{categoria.nome_categoria}}</option>
+			{% endfor %}
+        </select>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label for="stats_anime">Categoria:</label>
+        <select class= 'form-control' id = 'stats_anime' name='stats_anime' value='{{stats.id}}'>
+            {% for s in stats %}
+			    <option value="{{s.id}}"> {{s.situacao}}</option>
+			{% endfor %}
+        </select>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Sinopse:</label>
+        <input  class ='form-control' id = 'sinopse' name='sinopse' type="text" placeholder="Sinopse:" value='{{anime.sinopse}}'></input>
+    </div>
+    <br/>
+    
+    <button type="submit" class="btn btn-success" role="button">Salvar</button>
+    <a href="/anime" class="btn btn-secondary"> Cancelar</a>
+</form>
+  
+{% endblock %}

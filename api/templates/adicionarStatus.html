@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<mat-card>
+    <mat-card-header><h5 class="text-center">Dados dos Status</h5></mat-card-header>
+</mat-card>
+
+<form action="/status/salvar" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id_stats" value="{{stats.pk}}">
+    <div class='form-group'>
+        <label>Situação:</label>
+        <input  class ='form-control' id = 'situacao' name='situacao' type="text" placeholder="Situação do Anime:" value='{{stats.situacao}}' required></input>
+    </div>
+    <br/>
+    <div class='form-group'>
+        <label>Observação:</label>
+        <input  class ='form-control' id = 'observacao' name='observacao' type="text" placeholder="Observação:" value='{{stats.observacao}}' required></input>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success" role="button">Salvar</button>
+    <a href="/status" class="btn btn-secondary"> Cancelar</a>
+</form>
+  
+{% endblock %}

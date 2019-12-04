@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<mat-card>
+    <mat-card-header><h5 class="text-center">Lista de Autores</h5></mat-card-header>
+</mat-card>
+<a class="btn btn-primary" role='button' href='/autor/add'>Novo Autor</a>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in autor %}
+                <tr>
+                    <th scope="row">{{ a.pk }}</th>
+                    <td>{{ a.nome }}</td>
+                    <td>{{ a.sobrenome }}</td>
+                    <td>{{a.idade}}</td>
+                    <td>
+                        <a href="/autor/editar/{{a.pk}}" class="btn btn-warning" >Editar</a>
+                        <a href="/autor/excluir/{{a.pk}}" class="btn btn-danger" >Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}

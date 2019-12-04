@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<mat-card>
+    <mat-card-header><h5 class="text-center">Dados da Categoria</h5></mat-card-header>
+</mat-card>
+
+<form action="/categoria/salvar" method="post">
+    {% csrf_token %}
+
+    <input type="hidden" name="id_categoria" value="{{categoria.pk}}">
+    <div class='form-group'>
+        <label>Categoria:</label>
+        <input  class ='form-control' id = 'nome_categoria' name='nome_categoria' type="text" placeholder="Nome da Categoria:" value='{{categoria.nome_categoria}}' required></input>
+    </div>
+    <br/>
+    <button type="submit" class="btn btn-success" role="button">Salvar</button>
+    <a href="/categoria" class="btn btn-secondary"> Cancelar</a>
+</form>
+  
+{% endblock %}

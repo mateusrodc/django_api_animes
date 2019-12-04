@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<mat-card>
+    <mat-card-header><h5 class="text-center">Lista de Categorias</h5></mat-card-header>
+</mat-card>
+<a class="btn btn-primary" role='button' href='/categoria/add'>Nova Categoria</a>
+    <br />
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">NOME</th>
+                <th scope="col">AÇÕES</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in categoria %}
+                <tr>
+                    <th scope="row">{{ c.pk }}</th>
+                    <td>{{ c.nome_categoria }}</td>
+                    <td>
+                        <a href="/categoria/editar/{{c.pk}}" class="btn btn-warning" >Editar</a>
+                        <a href="/categoria/excluir/{{c.pk}}" class="btn btn-danger" >Remover</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}
